@@ -52,18 +52,18 @@ class _HomeState extends State<Home> {
         //currentIndex: getPageIndex,
         onTap: onTapChangePage,
         height: 50,
-        backgroundColor: Color(0xFF142535),
-        buttonBackgroundColor: Color(0xFF9ce991),
-        color: Color(0xFF77db9b),
+        backgroundColor: Colors.black,
+        buttonBackgroundColor: Color(0xFF07fdab),
+        color: Color(0xFF07fdab),
         animationDuration: Duration(
             milliseconds: 300
         ),
         //activeColor: Colors.pink,
         //inactiveColor: Colors.grey,
         items: [
-          Icon(Icons.content_copy_rounded,size:40, color: Colors.white,),
-          Icon(Icons.leaderboard_rounded,size: 30, color: Colors.white,),
-          Icon(Icons.monetization_on_rounded,size: 30, color: Colors.white,)
+          Icon(Icons.content_copy_rounded,size:40, color: Colors.black,),
+          Icon(Icons.leaderboard_rounded,size: 30, color: Colors.black,),
+          Icon(Icons.monetization_on_rounded,size: 30, color: Colors.black,)
           /*BottomNavigationBarItem(icon: Icon(Icons.home)),
           BottomNavigationBarItem(icon: Icon(Icons.search)),
           BottomNavigationBarItem(icon: Icon(Icons.pets_rounded)),

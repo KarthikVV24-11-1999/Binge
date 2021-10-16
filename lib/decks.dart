@@ -13,18 +13,18 @@ class _DecksState extends State<Decks> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF142535),
+      backgroundColor: Colors.black,
       drawer: NavigationDrawerWidget(),
       appBar: AppBar(
         bottom: PreferredSize(
             child: Container(
-              color: Color(0xFF9ce991),
+              color: Color(0xFF07fdab),
               height: 2.0,
             ),
             preferredSize: Size.fromHeight(4.0)),
-        backgroundColor: Color(0xFF142535),
+        backgroundColor: Colors.black,
         centerTitle: true,
-        title: Text("BINGE !", textAlign: TextAlign.center,style: TextStyle(color: Color(0xFF77db9b ), fontFamily: 'Bangers', fontSize: 40)),
+        title: Text("BINGE !", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontFamily: 'Bangers', fontSize: 40)),
       ),
       body: SafeArea(
           child: SingleChildScrollView(

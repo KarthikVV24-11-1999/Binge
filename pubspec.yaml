@@ -91,6 +91,16 @@ flutter:
      fonts:
            - asset: assets/font/Aleo-BoldItalic.ttf
              style: italic
+   - family: SubtleCurves
+     fonts:
+           - asset: assets/font/Subtle Curves.ttf
+   - family: SubtleCurvesItalic
+     fonts:
+           - asset: assets/font/Subtle Curves Italic.ttf
+   - family: IntegralCF
+     fonts:
+           - asset: assets/font/IntegralCF.otf
+
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

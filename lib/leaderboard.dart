@@ -17,13 +17,13 @@ class _LeaderboardState extends State<Leaderboard> {
         automaticallyImplyLeading: false,
         bottom: PreferredSize(
             child: Container(
-              color: Color(0xFF39FF14),
+              color: Color(0xFF07fdab),
               height: 2.0,
             ),
             preferredSize: Size.fromHeight(4.0)),
         backgroundColor: Colors.black,
         centerTitle: true,
-        title: Text("Leaderboard", textAlign: TextAlign.center,style: TextStyle(color: Color(0xFF39FF14), fontFamily: 'Bangers', fontSize: 30),),
+        title: Text("Leaderboard", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontFamily: 'Bangers', fontSize: 30),),
       ),
     );
   }

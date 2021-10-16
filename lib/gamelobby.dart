@@ -22,82 +22,94 @@ class _GameLobbyState extends State<GameLobby> {
       appBar: AppBar(
         bottom: PreferredSize(
             child: Container(
-              color: const Color(0xFF39FF14),
+              color: const Color(0xFF07fdab),
               height: 1.0,
             ),
             preferredSize: const Size.fromHeight(4.0)),
         backgroundColor: Colors.black,
         centerTitle: true,
-        title: const Text("MY ROOM", textAlign: TextAlign.center,style: TextStyle(color: Color(0xFF39FF14)),),
+        title: const Text("MY ROOM", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontFamily: 'Bangers', fontSize: 30),),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             const SizedBox(height: 40,),
-            const Text('ROOM CODE', style: TextStyle(fontSize: 20, color: Color(0xFF39FF14)),),
-            const SizedBox(height: 20,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 50,
-                  height: 60,
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: const Text('N', style: TextStyle(fontSize: 25, color: Color(0xFF39FF14)),),
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(5)),
-                      border: Border.all(color: const Color(0xFF39FF14),width: 1),
+            Container(
+              padding: const EdgeInsets.all(50.0),
+              child: Material(
+                borderRadius: BorderRadius.circular(20.0),
+                color: Color(0xFF07fdab),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        const Text('ROOM CODE', style: TextStyle(fontFamily: 'Aleo', fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),),
+                        const SizedBox(height: 20,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: 50,
+                              height: 60,
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: const Text('N', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),),
+                                decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(Radius.circular(5)),
+                                  border: Border.all(color: Colors.black,width: 1),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 9,),
+                            SizedBox(
+                              width: 50,
+                              height: 60,
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: const Text('O', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),),
+                                decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(Radius.circular(5)),
+                                  border: Border.all(color: Colors.black,width: 1),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 9,),
+                            SizedBox(
+                              width: 50,
+                              height: 60,
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Text('O', style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),),
+                                decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(Radius.circular(5)),
+                                  border: Border.all(color: Colors.black,width: 1),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 9,),
+                            SizedBox(
+                              width: 50,
+                              height: 60,
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Text('B', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                                  border: Border.all(color: Colors.black,width: 1),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  ),
-                ),
-                const SizedBox(width: 9,),
-                SizedBox(
-                  width: 50,
-                  height: 60,
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: const Text('O', style: TextStyle(fontSize: 25, color: Color(0xFF39FF14)),),
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(5)),
-                      border: Border.all(color: const Color(0xFF39FF14),width: 1),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 9,),
-                SizedBox(
-                  width: 50,
-                  height: 60,
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: Text('O', style: const TextStyle(fontSize: 25, color: Color(0xFF39FF14)),),
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(5)),
-                      border: Border.all(color: const Color(0xFF39FF14),width: 1),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 9,),
-                SizedBox(
-                  width: 50,
-                  height: 60,
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: Text('B', style: TextStyle(fontSize: 25, color: Color(0xFF39FF14)),),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      border: Border.all(color: Color(0xFF39FF14),width: 1),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+                  ))),
             SizedBox(height: 40,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text('INVITE FRIENDS', style: TextStyle(fontSize: 20, color: Color(0xFF39FF14)),),
+                Text('INVITE FRIENDS', style: TextStyle(fontFamily: 'Aleo', fontSize: 20, color: Colors.white),),
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -106,12 +118,12 @@ class _GameLobbyState extends State<GameLobby> {
                     side: BorderSide(width: 2, color: Color(0xFF39FF14)),
                   ),
                   onPressed: () => share(context),
-                  child: Text('SHARE CODE', style: TextStyle(fontSize: 15, color: Color(0xFF39FF14) ),),
+                  child: Text('SHARE CODE', style: TextStyle(fontFamily: 'Aleo', fontSize: 15, color: Colors.white ),),
                 )
               ],
             ),
             SizedBox(height: 50,),
-            Text('Waiting For Players..', style: TextStyle(fontSize: 15, color: Color(0xFF39FF14) ),),
+            Text('Waiting For Players..', style: TextStyle(fontFamily: 'Aleo', fontSize: 15, color: Colors.white ),),
             SizedBox(height: 50,),
             ListTile(
               leading: CircleAvatar(
@@ -121,7 +133,7 @@ class _GameLobbyState extends State<GameLobby> {
                       radius: 29,
                       backgroundImage: AssetImage(urlImage),
                   )),
-              title: Text(name, style: TextStyle(color: Color(0xFF39FF14))),
+              title: Text(name, style: TextStyle(fontFamily: 'Aleo', color: Color(0xFF07fdab))),
               onTap: (){},
             ),
             SizedBox(height: 200,),

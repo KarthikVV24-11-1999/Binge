@@ -1,5 +1,8 @@
-import 'package:binge/decks.dart';
+import 'package:binge/home.dart';
+import 'package:binge/login.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class Bingecoins extends StatefulWidget {
@@ -12,12 +15,16 @@ class Bingecoins extends StatefulWidget {
 
 class _BingecoinsState extends State<Bingecoins> {
 
+  final DateTime timestamp = DateTime.now();
   Razorpay razorpay;
+  String email ='';
+  int coins;
   TextEditingController textEditingController = new TextEditingController();
-
+  final _formKey = GlobalKey<FormState>();
   @override
   void initState() {
     super.initState();
+
 
     razorpay = new Razorpay();
 
@@ -55,12 +62,16 @@ class _BingecoinsState extends State<Bingecoins> {
   }
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
+
     // Do something when payment succeeds
     print("Payment success");
     Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => Decks(),
+          builder: (context) => Home(),
         ));
+    FirebaseFirestore.instance.collection('users').doc(currentUser.id).update({
+      "amount": coins + num.parse(textEditingController.text),
+    });
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -72,7 +83,6 @@ class _BingecoinsState extends State<Bingecoins> {
     // Do something when an external wallet is selected
     print("External Wallet");
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -91,30 +101,55 @@ class _BingecoinsState extends State<Bingecoins> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(30.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: textEditingController,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Color(0xFF77db9b), width: 2.0),
-                  borderRadius: BorderRadius.circular(25.0),
+        child:
+        StreamBuilder(
+            stream: FirebaseFirestore.instance.collection('users').doc(currentUser.id).snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return new Text("Loading");
+              }
+              var userDocument = snapshot.data;
+              coins = userDocument["amount"];
+              email = userDocument["email"];
+
+              return Form(
+                key: _formKey,
+                autovalidateMode: AutovalidateMode.always,
+                child: Column(
+                  children: [
+                    Text("Total Coins : ${coins.toString()}", style: TextStyle(fontSize: 20),),
+                    SizedBox(height: 15,),
+                    TextFormField(
+                      validator: RequiredValidator(
+                          errorText: "This Field Is Required."
+                      ),
+                      controller: textEditingController,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Color(0xFF77db9b), width: 2.0),
+                            borderRadius: BorderRadius.circular(25.0),
+                          ),
+                          hintText: "Amount to Pay"
+                      ),
+                    ),
+                    SizedBox(height: 12,),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: Color(0xFF77db9b)),
+                      child: Text("Purchase BingeCoins", style: TextStyle(
+                          color: Colors.white
+                      ),),
+                      onPressed: (){
+                        if (_formKey.currentState != null && _formKey.currentState.validate()){
+                          openCheckout();
+                        }
+
+                      },
+                    )
+                  ],
                 ),
-                  hintText: "Amount to Pay"
-              ),
-            ),
-            SizedBox(height: 12,),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF77db9b)),
-              child: Text("Purchase Coins", style: TextStyle(
-                  color: Colors.white
-              ),),
-              onPressed: (){
-                openCheckout();
-              },
-            )
-          ],
+              );
+            }
         ),
       ),
     );

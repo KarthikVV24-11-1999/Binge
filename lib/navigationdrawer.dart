@@ -1,9 +1,12 @@
+import 'package:binge/authentications.dart';
 import 'package:binge/home.dart';
 import 'package:binge/login.dart';
 import 'package:binge/profile.dart';
 import 'package:binge/reportbug.dart';
 import 'package:binge/settings.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 class NavigationDrawerWidget extends StatefulWidget {
   @override
@@ -64,7 +67,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                   buildMenuItem(
                     text: 'Logout',
                     icon: Icons.logout,
-                    onClicked: () => selectedItem(context, 4),
+                    onClicked: logoutUser,
                   ),
                 ],
               ),
@@ -83,30 +86,33 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
   }) =>
       InkWell(
         onTap: onClicked,
-        child: Container(
-          padding: padding.add(EdgeInsets.symmetric(vertical: 40)),
-          child: Row(
-            children: [
-              CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Color(0xFF39FF14),
-                  child: CircleAvatar(radius: 29, backgroundImage: AssetImage(urlImage))),
-              SizedBox(width: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name,
-                    style: TextStyle(fontSize: 20, color: Color(0xFF39FF14)),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    email,
-                    style: TextStyle(fontSize: 14, color: Color(0xFF39FF14)),
-                  ),
-                ],
-              ),
-            ],
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Container(
+            padding: padding.add(EdgeInsets.symmetric(vertical: 40)),
+            child: Row(
+              children: [
+                CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Color(0xFF39FF14),
+                    child: CircleAvatar(radius: 29, backgroundImage: NetworkImage(currentUser.url))),
+                SizedBox(width: 20),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      currentUser.username,
+                      style: TextStyle(fontSize: 20, color: Color(0xFF39FF14)),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      currentUser.email,
+                      style: TextStyle(fontSize: 13, color: Color(0xFF39FF14)),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       );
@@ -155,12 +161,22 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
               builder: (context) => ReportBug(),
             ));
         break;
-      case 4:
-        Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => Login(),
-            ));
+      case 4: logoutUser;
         break;
     }
+  }
+
+  logoutUser() async {
+    //await gSignIn.signOut();
+    User user = await auth.currentUser;
+    print(user.providerData[0].providerId);
+    if (user.providerData[0].providerId == 'google.com') {
+      await gSignIn.disconnect();
+    }
+    await auth.signOut();
+    Phoenix.rebirth(context);
+    // Navigator.push(
+    //     context, MaterialPageRoute(builder: (context) => TestLogin()));
+
   }
 }

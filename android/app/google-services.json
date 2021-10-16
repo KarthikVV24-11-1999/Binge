@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "3587118456",
+    "project_id": "binge-1b548",
+    "storage_bucket": "binge-1b548.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:3587118456:android:4892af76a132eea21be48d",
+        "android_client_info": {
+          "package_name": "com.example.binge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "3587118456-6lsi61ai6gt7vp789slagev20sei4ifj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.binge",
+            "certificate_hash": "feea2c41f1047fa9f272453f64407fc1612b4810"
+          }
+        },
+        {
+          "client_id": "3587118456-ku2jpj7a9jd5g51rhfkt5cqjbnm8aevb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDEUytKa2Z7D1D8c_Uqsnb8r_5-mfl3aM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "3587118456-ku2jpj7a9jd5g51rhfkt5cqjbnm8aevb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

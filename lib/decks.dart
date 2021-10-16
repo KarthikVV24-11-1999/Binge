@@ -1,4 +1,5 @@
-import 'package:binge/gamelobby.dart';
+import 'package:binge/creategamelobby.dart';
+import 'package:binge/gametype.dart';
 import 'package:binge/navigationdrawer.dart';
 import 'package:flutter/material.dart';
 
@@ -62,97 +63,58 @@ class _DecksState extends State<Decks> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            TextButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameLobby()));
-                },
-                child: card('assets/images/friends.jpg', Colors.black, 30)
-            ),
-            TextButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameLobby()));
-                },
-                child: card('assets/images/GOT.jpg', Colors.black,15)
-            ),
+            card('assets/images/friends.jpg'),
+            card('assets/images/GOT.jpg'),
           ],
         ),
         const SizedBox(height: 5,),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            TextButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameLobby()));
-                },
-                child: card('assets/images/mirzapur.jpg', Colors.black,15)
-            ),
-            TextButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameLobby()));
-                },
-                child:  card('assets/images/bbt.jpg', Colors.black, 20)
-            ),
+            card('assets/images/mirzapur.jpg'),
+            card('assets/images/bbt.jpg'),
           ],
         ),
         const SizedBox(height: 5,),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            TextButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameLobby()));
-                },
-                child: card('assets/images/B99.jpg', Colors.black, 30)
-            ),
-            TextButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameLobby()));
-                },
-                child: card('assets/images/lucifer.jpg',  Colors.black, 10)
-            ),
+            card('assets/images/B99.jpg'),
+            card('assets/images/lucifer.jpg'),
           ],
         ),
         const SizedBox(height: 5,),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            TextButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameLobby()));
-                },
-                child: card('assets/images/moneyheist.jpg', Colors.black, 30)
-            ),
-            TextButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameLobby()));
-                },
-                child: card('assets/images/squidgame.jpeg',  Colors.black, 10)
-            ),
+            card('assets/images/moneyheist.jpg'),
+            card('assets/images/squidgame.jpeg')
           ],
         ),
-        /*PetOptions(
-                  itemOneTitle: "Vet \nClinics",
-                  itemOneImg: "assets/images/Vet.png",
-                  itemTwoTitle: "Places \nto eat",
-                  itemTwoImg: "assets/images/dogfood.png"),,*/
       ],
     );
   }
 
-  card (String url, Color colors, double top) {
-    return SizedBox(
-      width: 175,
-      height: 240,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          border: Border.all(color: Color(0xFF77db9b),width: 1),
-          image: DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage(url)
+  card (String url) {
+    return
+      TextButton(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => GameType()));
+          },
+          child: SizedBox(
+            width: 175,
+            height: 240,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                border: Border.all(color: Color(0xFF77db9b),width: 1),
+                image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage(url)
+                ),
+              ),
+            ),
           ),
-        ),
-      ),
-    );
+      );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:binge/coins.dart';
 import 'package:binge/decks.dart';
-import 'package:binge/gamelobby.dart';
+import 'package:binge/creategamelobby.dart';
 import 'package:binge/leaderboard.dart';
 import 'package:binge/navigationdrawer.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';

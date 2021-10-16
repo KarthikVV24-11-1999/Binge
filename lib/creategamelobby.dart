@@ -1,19 +1,18 @@
+import 'package:binge/login.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
-class GameLobby extends StatefulWidget {
-  const GameLobby({Key key}) : super(key: key);
+class CreateGameLobby extends StatefulWidget {
+  const CreateGameLobby({Key key}) : super(key: key);
 
 
   @override
-  _GameLobbyState createState() => _GameLobbyState();
+  _CreateGameLobbyState createState() => _CreateGameLobbyState();
 }
 
-class _GameLobbyState extends State<GameLobby> {
+class _CreateGameLobbyState extends State<CreateGameLobby> {
 
-  final name = 'Spiderman';
-  final email = 'spiderman@gmail.com';
-  final urlImage = 'assets/images/profile.jpg';
+  String code = currentUser.username;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +44,7 @@ class _GameLobbyState extends State<GameLobby> {
                   height: 60,
                   child: Container(
                     alignment: Alignment.center,
-                    child: const Text('N', style: TextStyle(fontSize: 25, color: Color(0xFF39FF14)),),
+                    child: Text('${code[0]}', style: TextStyle(fontSize: 25, color: Color(0xFF39FF14)),),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(5)),
                       border: Border.all(color: const Color(0xFF39FF14),width: 1),
@@ -58,7 +57,7 @@ class _GameLobbyState extends State<GameLobby> {
                   height: 60,
                   child: Container(
                     alignment: Alignment.center,
-                    child: const Text('O', style: TextStyle(fontSize: 25, color: Color(0xFF39FF14)),),
+                    child: Text('${code[1].toUpperCase()}', style: TextStyle(fontSize: 25, color: Color(0xFF39FF14)),),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(5)),
                       border: Border.all(color: const Color(0xFF39FF14),width: 1),
@@ -71,7 +70,7 @@ class _GameLobbyState extends State<GameLobby> {
                   height: 60,
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('O', style: const TextStyle(fontSize: 25, color: Color(0xFF39FF14)),),
+                    child: Text('${code[2].toUpperCase()}', style: const TextStyle(fontSize: 25, color: Color(0xFF39FF14)),),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(5)),
                       border: Border.all(color: const Color(0xFF39FF14),width: 1),
@@ -84,7 +83,7 @@ class _GameLobbyState extends State<GameLobby> {
                   height: 60,
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('B', style: TextStyle(fontSize: 25, color: Color(0xFF39FF14)),),
+                    child: Text('${code[3].toUpperCase()}', style: TextStyle(fontSize: 25, color: Color(0xFF39FF14)),),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(5)),
                       border: Border.all(color: Color(0xFF39FF14),width: 1),
@@ -119,9 +118,9 @@ class _GameLobbyState extends State<GameLobby> {
                   backgroundColor: const Color(0xFF39FF14),
                   child: CircleAvatar(
                       radius: 29,
-                      backgroundImage: AssetImage(urlImage),
+                      backgroundImage: NetworkImage(currentUser.url),
                   )),
-              title: Text(name, style: TextStyle(color: Color(0xFF39FF14))),
+              title: Text(currentUser.username, style: TextStyle(color: Color(0xFF39FF14))),
               onTap: (){},
             ),
             SizedBox(height: 200,),
@@ -166,7 +165,7 @@ class _GameLobbyState extends State<GameLobby> {
   void share(BuildContext context) {
     final RenderBox box = context.findRenderObject();
 
-    Share.share("I want to play BINGE! with you! Room Code: 'NOOB' Open App > Login > Join Room > Enter Room code. Believe me, this is an awesome game!",
+    Share.share("I want to play BINGE! with you! Room Code: '${code[0].toUpperCase()} ${code[1].toUpperCase()} ${code[2].toUpperCase()} ${code[3].toUpperCase()}' Open App > Login > Join Room > Enter Room code. Believe me, this is an awesome game!",
         subject: "CODE",
         sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
   }

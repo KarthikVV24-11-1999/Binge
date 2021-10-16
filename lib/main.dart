@@ -9,12 +9,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  //await Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(Phoenix(
     child: MaterialApp(
-      home: Introduction(),
-      theme: ThemeData(
-      ),
+      home: Login(),
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
     ),

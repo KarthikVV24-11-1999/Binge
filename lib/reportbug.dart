@@ -16,13 +16,13 @@ class _ReportBugState extends State<ReportBug> {
       appBar: AppBar(
         bottom: PreferredSize(
             child: Container(
-              color: Color(0xFF39FF14),
+              color: Color(0xFF07fdab),
               height: 2.0,
             ),
             preferredSize: Size.fromHeight(4.0)),
         backgroundColor: Colors.black,
         centerTitle: true,
-        title: Text("REPORT A BUG", textAlign: TextAlign.center,style: TextStyle(color: Color(0xFF39FF14)),),
+        title: Text("REPORT A BUG", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontFamily: 'Bangers', fontSize: 30),),
       ),
     );
   }

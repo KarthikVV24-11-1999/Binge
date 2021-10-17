@@ -1,8 +1,7 @@
 import 'package:binge/coins.dart';
 import 'package:binge/decks.dart';
-import 'package:binge/creategamelobby.dart';
 import 'package:binge/leaderboard.dart';
-import 'package:binge/navigationdrawer.dart';
+import 'package:binge/profile.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -41,7 +40,8 @@ class _HomeState extends State<Home> {
         children: <Widget>[
           Decks(),
           Leaderboard(),
-          Bingecoins()
+          Bingecoins(),
+          Profile()
         ],
         controller: pageController,
         onPageChanged: whenPageChanges,
@@ -56,14 +56,15 @@ class _HomeState extends State<Home> {
         buttonBackgroundColor: Color(0xFF07fdab),
         color: Color(0xFF07fdab),
         animationDuration: Duration(
-            milliseconds: 300
+            milliseconds: 200
         ),
         //activeColor: Colors.pink,
         //inactiveColor: Colors.grey,
         items: [
           Icon(Icons.content_copy_rounded,size:40, color: Colors.black,),
           Icon(Icons.leaderboard_rounded,size: 30, color: Colors.black,),
-          Icon(Icons.monetization_on_rounded,size: 30, color: Colors.black,)
+          Icon(Icons.monetization_on_rounded,size: 30, color: Colors.black,),
+          Icon(Icons.person,size: 30, color: Colors.black,)
           /*BottomNavigationBarItem(icon: Icon(Icons.home)),
           BottomNavigationBarItem(icon: Icon(Icons.search)),
           BottomNavigationBarItem(icon: Icon(Icons.pets_rounded)),

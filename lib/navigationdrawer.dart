@@ -95,7 +95,8 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                 CircleAvatar(
                     radius: 30,
                     backgroundColor: Color(0xFF07fdab),
-                    child: CircleAvatar(radius: 29, backgroundImage: NetworkImage((currentUser != null) ? currentUser.url : 'assets/images/profile.jpg'))),
+                    child: CircleAvatar(
+                        radius: 29, backgroundImage: NetworkImage((currentUser != null) ? currentUser.url : 'assets/images/profile.jpg'))),
                 SizedBox(width: 20),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,8 +169,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
 
   logoutUser() async {
     //await gSignIn.signOut();
-    User user = await auth.currentUser;
-    print(user.providerData[0].providerId);
+    User user = auth.currentUser;
     if (user.providerData[0].providerId == 'google.com') {
       await gSignIn.disconnect();
     }

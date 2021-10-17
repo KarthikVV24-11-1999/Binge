@@ -10,7 +10,6 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 final GoogleSignIn gSignIn = GoogleSignIn();
 useri currentUser;
-final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class Login extends StatefulWidget {
   @override
@@ -31,10 +30,8 @@ class _LoginState extends State<Login> {
     }, onError: (gError) {
       print("Error Message: $gError");
     });
-
     gSignIn.signInSilently(suppressErrors: false).then((gsignInAccount) {
       controlSignIn(gsignInAccount);
-
       setState(() {
         isSignedIn = false;
       });
@@ -63,7 +60,6 @@ class _LoginState extends State<Login> {
   logoutUser() {
     gSignIn.disconnect();
   }
-
 
 
 
@@ -159,7 +155,6 @@ class _LoginState extends State<Login> {
           "username": (username == null) ? 'Un-Named' : username,
           "url": userData['picture']['data']['url'],
           "email": userData['email'],
-          "bio": "",
           "amount": 0,
           "timestamp": timestamp,
         });
@@ -193,6 +188,7 @@ class _LoginState extends State<Login> {
           title = 'Wrong Password';
           break;
       }
+
       showDialog(context: context, builder: (context) => AlertDialog(
         title: Text('Log In with FaceBook failed'),
         content: Text(title),
@@ -214,12 +210,11 @@ class _LoginState extends State<Login> {
     try{
       GoogleSignInAccount googleSignInAccount = await gooleSignIn.signIn();
       if (googleSignInAccount != null) {
-        GoogleSignInAuthentication googleSignInAuthentication =
-        await googleSignInAccount.authentication;
+        /*GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
         AuthCredential credential = GoogleAuthProvider.credential(
             idToken: googleSignInAuthentication.idToken,
-            accessToken: googleSignInAuthentication.accessToken);
-        UserCredential result = await auth.signInWithCredential(credential);
+            accessToken: googleSignInAuthentication.accessToken);*/
+        //UserCredential result = await auth.signInWithCredential(credential);
         User user = await auth.currentUser;
         print(user.uid);
         final GoogleSignInAccount gCurrentUser = gSignIn.currentUser;
@@ -233,7 +228,6 @@ class _LoginState extends State<Login> {
             "username": (username == null) ? 'Un-Named' : username,
             "url": gCurrentUser.photoUrl,
             "email": gCurrentUser.email,
-            "bio": "",
             "amount": 0,
             "timestamp": timestamp,
           });
@@ -290,13 +284,13 @@ class _LoginState extends State<Login> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text("Log In",
-                  style: TextStyle(fontSize:30, color: Color(0xFF39FF14))
+                  style: TextStyle(fontSize:30, color: Color(0xFF07fdab))
               ),
               SizedBox(
                 height: 10,
               ),
               Text("Log In with one of the following options",
-                  style: TextStyle(fontSize:15, color: Color(0xFF39FF14))),
+                  style: TextStyle(fontSize:15, color: Color(0xFF07fdab))),
               SizedBox(
                 height: 30,
               ),
@@ -334,7 +328,7 @@ class _LoginState extends State<Login> {
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0)),
-                    primary: Color(0xFF39FF14),
+                    primary: Color(0xFF07fdab),
                     alignment: Alignment.center,
                     padding: EdgeInsets.all(0.0),
                     textStyle: TextStyle(
@@ -362,10 +356,10 @@ class _LoginState extends State<Login> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text("Don't have an account?",
-                        style: TextStyle(fontSize:15, color: Color(0xFF39FF14))),
+                        style: TextStyle(fontSize:15, color: Color(0xFF07fdab))),
                     TextButton(
                       style: TextButton.styleFrom(
-                        primary: Color(0xFF39FF14),
+                        primary: Color(0xFF07fdab),
                       ),
                       child: Text('Sign Up', style: (TextStyle(fontSize: 15))),
                       onPressed: () {

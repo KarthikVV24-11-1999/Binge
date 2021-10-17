@@ -1,6 +1,6 @@
-import 'package:binge/creategamelobby.dart';
 import 'package:binge/gametype.dart';
-import 'package:binge/navigationdrawer.dart';
+import 'package:binge/login.dart';
+import 'package:binge/profile.dart';
 import 'package:flutter/material.dart';
 
 class Decks extends StatefulWidget {
@@ -15,8 +15,19 @@ class _DecksState extends State<Decks> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      drawer: NavigationDrawerWidget(),
+      //drawer: NavigationDrawerWidget(),
       appBar: AppBar(
+        leading: TextButton(
+          onPressed: () {Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => Profile(),
+              ));},
+          child: CircleAvatar(
+              radius: 20,
+              backgroundColor: Color(0xFF07fdab),
+              child: CircleAvatar(
+                  radius: 19, backgroundImage: NetworkImage((currentUser != null) ? currentUser.url : 'assets/images/profile.jpg'))),
+        ),
         bottom: PreferredSize(
             child: Container(
               color: Color(0xFF07fdab),
@@ -58,7 +69,7 @@ class _DecksState extends State<Decks> {
                   color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold, height: 1.5, fontFamily: 'Aleo'),
             )),
         const SizedBox(
-          height: 35,
+          height: 25,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -102,7 +113,7 @@ class _DecksState extends State<Decks> {
             Navigator.push(context, MaterialPageRoute(builder: (context) => GameType()));
           },
           child: SizedBox(
-            width: 180,
+            width: MediaQuery.of(context).size.width/2.3,
             height: 270,
             child: Container(
               decoration: BoxDecoration(

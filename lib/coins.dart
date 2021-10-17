@@ -87,6 +87,7 @@ class _BingecoinsState extends State<Bingecoins> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         bottom: PreferredSize(
@@ -111,13 +112,12 @@ class _BingecoinsState extends State<Bingecoins> {
               var userDocument = snapshot.data;
               coins = userDocument["amount"];
               email = userDocument["email"];
-
               return Form(
                 key: _formKey,
                 autovalidateMode: AutovalidateMode.always,
                 child: Column(
                   children: [
-                    Text("Total Coins : ${coins.toString()}", style: TextStyle(fontSize: 20),),
+                    Text("Total Coins : ${coins.toString()}", style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w700),),
                     SizedBox(height: 15,),
                     TextFormField(
                       validator: RequiredValidator(
@@ -125,11 +125,16 @@ class _BingecoinsState extends State<Bingecoins> {
                       ),
                       controller: textEditingController,
                       decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Color(0xFF77db9b), width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
                           border: OutlineInputBorder(
                             borderSide: const BorderSide(color: Color(0xFF77db9b), width: 2.0),
                             borderRadius: BorderRadius.circular(25.0),
                           ),
-                          hintText: "Amount to Pay"
+                          hintText: "Amount to Pay",
+                        hintStyle: TextStyle(color: Colors.white,),
                       ),
                     ),
                     SizedBox(height: 12,),

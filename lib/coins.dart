@@ -21,13 +21,12 @@ class _BingecoinsState extends State<Bingecoins> {
   int coins;
   TextEditingController textEditingController = new TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  
   @override
   void initState() {
     super.initState();
-
-
     razorpay = new Razorpay();
-
     razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
     razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
     razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
@@ -39,6 +38,7 @@ class _BingecoinsState extends State<Bingecoins> {
     super.dispose();
     razorpay.clear();
   }
+
   void openCheckout(){
     var options = {
       "key" : "rzp_test_jJpBvtaRGZFQSe",

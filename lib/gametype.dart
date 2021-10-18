@@ -19,7 +19,7 @@ class _GameTypeState extends State<GameType> {
               style: ElevatedButton.styleFrom(
                   primary: Color(0xFF77db9b)),
               child: Text("Join Game", style: TextStyle(
-                  color: Colors.white
+                  color: Colors.black
               ),),
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => JoinGameLobby()));
@@ -30,7 +30,7 @@ class _GameTypeState extends State<GameType> {
               style: ElevatedButton.styleFrom(
                   primary: Color(0xFF77db9b)),
               child: Text("Create Game", style: TextStyle(
-                  color: Colors.white
+                  color: Colors.black
               ),),
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => CreateGameLobby()));

@@ -289,6 +289,6 @@ class _IntroductionState extends State<Introduction> {
     bodyTextStyle: TextStyle(fontSize: 20, color: Colors.white),
     descriptionPadding: EdgeInsets.all(16).copyWith(bottom: 0),
     imagePadding: EdgeInsets.all(25),
-    pageColor: Theme.of(context).primaryColorLight,
+    pageColor: Theme.of(context).backgroundColor,
   );
 }

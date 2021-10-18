@@ -25,13 +25,13 @@ class _JoinGameLobbyState extends State<JoinGameLobby> {
       appBar: AppBar(
         bottom: PreferredSize(
             child: Container(
-              color: const Color(0xFF39FF14),
+              color: const Color(0xFF07fdab),
               height: 1.0,
             ),
             preferredSize: const Size.fromHeight(4.0)),
         backgroundColor: Colors.black,
         centerTitle: true,
-        title: const Text("MY ROOM", textAlign: TextAlign.center,style: TextStyle(color: Color(0xFF39FF14)),),
+        title: const Text("MY ROOM", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontFamily: 'Bangers', fontSize: 30),),
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -143,23 +143,6 @@ class _JoinGameLobbyState extends State<JoinGameLobby> {
                         ),
                       ),
                     ),
-                  ],
-                ),
-                SizedBox(height: 40,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text('INVITE FRIENDS', style: TextStyle(fontSize: 20, color: Color(0xFF39FF14)),),
-                    OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                        ),
-                        side: BorderSide(width: 2, color: Color(0xFF39FF14)),
-                      ),
-                      onPressed: () => share(context),
-                      child: Text('SHARE CODE', style: TextStyle(fontSize: 15, color: Color(0xFF39FF14) ),),
-                    )
                   ],
                 ),
                 SizedBox(height: 50,),

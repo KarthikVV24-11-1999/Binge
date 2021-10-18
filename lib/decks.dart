@@ -74,15 +74,15 @@ class _DecksState extends State<Decks> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            card('assets/images/friends.jpg'),
-            card('assets/images/GOT.jpg'),
+            card('assets/images/friends.jpeg'),
+            card('assets/images/GOT.jpeg'),
           ],
         ),
         const SizedBox(height: 5,),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            card('assets/images/mirzapur.jpg'),
+            card('assets/images/mirzapur.jpeg'),
             card('assets/images/bbt.jpg'),
           ],
         ),
@@ -91,7 +91,7 @@ class _DecksState extends State<Decks> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             card('assets/images/B99.jpg'),
-            card('assets/images/lucifer.jpg'),
+            card('assets/images/lucifer.jpeg'),
           ],
         ),
         const SizedBox(height: 5,),
@@ -117,7 +117,7 @@ class _DecksState extends State<Decks> {
             height: 270,
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
+                borderRadius: BorderRadius.all(Radius.circular(15)),
                 border: Border.all(color: Color(0xFF77db9b),width: 1),
                 image: DecorationImage(
                     fit: BoxFit.fill,

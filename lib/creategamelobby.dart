@@ -54,7 +54,7 @@ class _CreateGameLobbyState extends State<CreateGameLobby> {
                                 height: 60,
                                 child: Container(
                                   alignment: Alignment.center,
-                                  child: Text('${code[0]}', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),),
+                                  child: Text('${code[0].toUpperCase()}', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),),
                                   decoration: BoxDecoration(
                                     borderRadius: const BorderRadius.all(Radius.circular(5)),
                                     border: Border.all(color: Colors.black,width: 1),
@@ -136,7 +136,7 @@ class _CreateGameLobbyState extends State<CreateGameLobby> {
                 title: Text((currentUser != null) ? currentUser.username : 'Spiderman', style: TextStyle(fontFamily: 'Aleo', color: Color(0xFF07fdab))),
                 onTap: (){},
               ),
-              SizedBox(height: 200,),
+              SizedBox(height: 180,),
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.all(10),
@@ -147,7 +147,7 @@ class _CreateGameLobbyState extends State<CreateGameLobby> {
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0)),
-                    primary: Color(0xFF39FF14),
+                    primary: Color(0xFF07fdab),
                     alignment: Alignment.center,
                     padding: EdgeInsets.all(0.0),
                     textStyle: TextStyle(

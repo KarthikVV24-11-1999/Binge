@@ -2,6 +2,7 @@ import 'package:binge/CreateAccountPage.dart';
 import 'package:binge/authentications.dart';
 import 'package:binge/home.dart';
 import 'package:binge/user.dart';
+import 'package:binge/FadeAnimation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -286,123 +287,145 @@ class _LoginState extends State<Login> {
   }
 
 
-  Scaffold login() {
+  Scaffold login(width) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColorLight,
+      backgroundColor: Theme.of(context).backgroundColor,
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.only(left: 20, right: 20, top: 100, bottom: 20),
+          padding: EdgeInsets.only(bottom: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  // Stroked text as border.
-                  Text(
-                    'Log In',
-                    style:
-                    TextStyle(
-                      fontFamily: 'SubtleCurvesItalic',
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 2.0,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 6
-                        ..color = Colors.black,
-                    ),
-                  ),
-                  // Solid text as fill.
-                  Text(
-                    'Log In',
-                    style: TextStyle(
-                      fontFamily: 'SubtleCurvesItalic',
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 2.0,
-                      color: Color(0xFF07fdab),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text("Log In with one of the following options",
-                  style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize:15, fontFamily: 'Aleo', fontWeight: FontWeight.bold)),
-              SizedBox(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  TextButton(
-                    onPressed: loginUser,
-                    child: Image(
-                        width: 40,
-                        image: AssetImage('assets/icons/google.png')),
-                  ),
-                  TextButton(
-                    onPressed: _logInWithFacebook,
-                    child: Image(
-                        width: 40,
-                        image: AssetImage('assets/icons/facebook.png')),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
               Container(
-                alignment: Alignment.center,
-                margin: EdgeInsets.all(10),
-                width: 2000,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: (){
-                    Navigator.push(
-                        context, MaterialPageRoute(
-                        builder: (context) => Home()));
-                    },
-                  style: ElevatedButton.styleFrom(
-                    side: BorderSide(color: Colors.black, width: 2),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0)),
-                    primary: Color(0xFF07fdab),
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(0.0),
-                    textStyle: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                  child: Container(
-                    constraints:
-                    BoxConstraints(maxWidth: 400.0, minHeight: 50.0),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Log In",
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize:15, fontFamily: 'Aleo', fontWeight: FontWeight.bold)
-                    ),
-                  ),
+                height: 400,
+                child: Stack(
+                  children: <Widget>[
+                    // Positioned(
+                    //   top: 25,
+                    //   height: 400,
+                    //   width: width+20,
+                    //   child: FadeAnimation(1, Container(
+                    //     decoration: BoxDecoration(
+                    //       image: DecorationImage(
+                    //         image: AssetImage('assets/images/background.png'),
+                    //         fit: BoxFit.fill
+                    //       ),
+                    //     ),
+                    //   )),
+                    // ),
+                    Positioned(
+                      height: 400,
+                      width: width+20,
+                      child: FadeAnimation(1.3, Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/background-2.png'),
+                            fit: BoxFit.fill
+                          )
+                        ),
+                      )),
+                    )
+                  ],
                 ),
               ),
               Container(
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                padding: EdgeInsets.only(top: 40, left: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text("Don't have an account?",
+                    Stack(
+                      children: <Widget>[
+                        // Stroked text as border.
+                        Text(
+                          'Log In',
+                          style:
+                          TextStyle(
+                            fontFamily: 'SubtleCurvesItalic',
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 2.0,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 6
+                              ..color = Colors.black,
+                          ),
+                        ),
+                        // Solid text as fill.
+                        Text(
+                          'Log In',
+                          style: TextStyle(
+                            fontFamily: 'SubtleCurvesItalic',
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 2.0,
+                            color: Color(0xFF07fdab),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text("Log In with one of the following options",
                         style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize:15, fontFamily: 'Aleo', fontWeight: FontWeight.bold)),
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        primary: Color(0xFF07fdab),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        TextButton(
+                          onPressed: loginUser,
+                          child: Image(
+                              width: 40,
+                              image: AssetImage('assets/icons/google.png')),
+                        ),
+                        TextButton(
+                          onPressed: _logInWithFacebook,
+                          child: Image(
+                              width: 40,
+                              image: AssetImage('assets/icons/facebook.png')),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.all(10),
+                      width: 2000,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: (){
+                          Navigator.push(
+                              context, MaterialPageRoute(
+                              builder: (context) => Home()));
+                          },
+                        style: ElevatedButton.styleFrom(
+                          side: BorderSide(color: Colors.black, width: 2),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0)),
+                          primary: Color(0xFF07fdab),
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.all(0.0),
+                          textStyle: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                        child: Container(
+                          constraints:
+                          BoxConstraints(maxWidth: 400.0, minHeight: 50.0),
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Log In",
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize:15, fontFamily: 'Aleo', fontWeight: FontWeight.bold, color: Colors.black)
+                          ),
+                        ),
                       ),
-                      child: Text('Sign Up', style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize:15, fontFamily: 'Aleo', fontWeight: FontWeight.bold, color: Color(0xFF07fdab)),),
-                      onPressed: () {
-                        //Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
-                      },
                     ),
                   ],
                 ),
@@ -416,13 +439,14 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     if (loading == true) {
       return CircularProgressIndicator();
     } else {
       if (isSignedIn) {
         return Home();
       } else {
-        return login();
+        return login(width);
       }
     }
   }

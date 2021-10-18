@@ -1,5 +1,5 @@
 import 'package:binge/introduction.dart';
-import 'package:binge/login.dart';
+import 'package:binge/themes/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,6 +13,8 @@ void main() async {
   runApp(Phoenix(
     child: MaterialApp(
       home: Introduction(),
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
     ),

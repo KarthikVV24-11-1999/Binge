@@ -14,7 +14,6 @@ class _IntroductionState extends State<Introduction> {
   @override
   Widget build(BuildContext context) => IntroductionScreen(
     isBottomSafeArea: true,
-    color: Colors.white,
     pages: [
       PageViewModel(
         titleWidget: Column(
@@ -25,8 +24,9 @@ class _IntroductionState extends State<Introduction> {
                 // Stroked text as border.
                 Text(
                   'Welcome',
-                  style: TextStyle(
-                    fontFamily: 'SubtleCurvesItalic', 
+                  style:
+                  TextStyle(
+                    fontFamily: 'SubtleCurvesItalic',
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 2.0,
@@ -52,7 +52,8 @@ class _IntroductionState extends State<Introduction> {
             // Text('Welcome', style:TextStyle(fontFamily: 'SubtleCurvesItalic', fontSize: 40.0, fontWeight: FontWeight.bold, letterSpacing: 2.0, color: Color(0xFF07fdab))),
             SizedBox(height: 20,),
             Text("I'll be your guide. Let's start by swiping right. That's not so hard, is it?",
-              textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Aleo', fontSize: 25, color: Colors.white),),
+              textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodyText1.copyWith(fontFamily: 'Aleo', fontSize: 25,)
+              ),
             // Material(
             //   borderRadius: BorderRadius.circular(20.0),
             //   color: Color(0xFF8390FA),
@@ -113,7 +114,7 @@ class _IntroductionState extends State<Introduction> {
             // Text('Select a Deck', style:TextStyle(fontFamily: 'SubtleCurvesItalic', fontSize: 40.0, fontWeight: FontWeight.bold, letterSpacing: 2.0, color: Color(0xFF07fdab))),
             SizedBox(height: 25,),
             Text("Pick a show/category from the decks, wager a few coins and double your coins in 60 seconds, if you are 'the ultimate binge watcher'. Binge offers a fresh take on TV show trivia by letting you win or lose coins on quick 5 question MCQ quizzes. Be prepared for some tricky and mind boggling questions from your favourite TV shows.",
-                textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Aleo', fontSize: 25, color: Colors.white),)
+                textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodyText1.copyWith(fontFamily: 'Aleo', fontSize: 25,),)
           ],
         ),
         body: '',
@@ -126,7 +127,7 @@ class _IntroductionState extends State<Introduction> {
             Image.asset('assets/images/I declare bankruptcy.png'),
             SizedBox(height: 40,),
             Text("Make sure you've recapped the TV show before challenging your friends as you might end up declaring bankruptcy like our friend Michael Scott. ( Just kidding!! ) All coins are virtual binge coins!! So don't worry...",
-              textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Aleo', fontSize: 25, color: Colors.white),)
+              textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodyText1.copyWith(fontFamily: 'Aleo', fontSize: 25,),)
           ],
         ),
         body: '',
@@ -179,7 +180,7 @@ class _IntroductionState extends State<Introduction> {
             // ),
             SizedBox(height: 40,),
             Text('Share room code with your friend and invite them to the game',
-              textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Aleo', fontSize: 25, color: Colors.white),)
+              textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodyText1.copyWith(fontFamily: 'Aleo', fontSize: 25,),)
           ],
         ),
         body: '',
@@ -288,6 +289,6 @@ class _IntroductionState extends State<Introduction> {
     bodyTextStyle: TextStyle(fontSize: 20, color: Colors.white),
     descriptionPadding: EdgeInsets.all(16).copyWith(bottom: 0),
     imagePadding: EdgeInsets.all(25),
-    pageColor: Colors.black,
+    pageColor: Theme.of(context).primaryColorLight,
   );
 }

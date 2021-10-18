@@ -6,7 +6,7 @@ class useri {
   final String username;
   final String url;
   final String email;
-  final String bio;
+  final int amount;
 
   useri({
     this.id,
@@ -14,7 +14,7 @@ class useri {
     this.username,
     this.url,
     this.email,
-    this.bio,
+    this.amount,
   });
 
   factory useri.fromDocument(DocumentSnapshot doc) {
@@ -24,7 +24,7 @@ class useri {
       username: doc['username'],
       url: doc['url'],
       profileName: doc['profileName'],
-      bio: doc['bio'],
+      amount: doc['amount'],
     );
   }
 }

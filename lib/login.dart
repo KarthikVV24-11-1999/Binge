@@ -12,6 +12,8 @@ final GoogleSignIn gSignIn = GoogleSignIn();
 useri currentUser;
 
 class Login extends StatefulWidget {
+  const Login({Key key}) : super(key: key);
+
   @override
   _LoginState createState() => _LoginState();
 }
@@ -42,6 +44,7 @@ class _LoginState extends State<Login> {
       loading = false;
     });
   }
+
 
   controlSignIn(signInAccount) async {
     if (signInAccount != null) {
@@ -130,6 +133,16 @@ class _LoginState extends State<Login> {
     }
   }*/
 
+
+
+
+
+
+
+
+
+
+
   void _logInWithFacebook() async {
     setState(() {
       loading = true;
@@ -141,7 +154,7 @@ class _LoginState extends State<Login> {
       final facebookAuthCredential = FacebookAuthProvider.credential(facebookLoginResult.accessToken.token);
       await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
 
-      User user = await auth.currentUser;
+      User user = auth.currentUser;
       print(user.uid);
       DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
 
@@ -188,7 +201,6 @@ class _LoginState extends State<Login> {
           title = 'Wrong Password';
           break;
       }
-
       showDialog(context: context, builder: (context) => AlertDialog(
         title: Text('Log In with FaceBook failed'),
         content: Text(title),
@@ -210,12 +222,13 @@ class _LoginState extends State<Login> {
     try{
       GoogleSignInAccount googleSignInAccount = await gooleSignIn.signIn();
       if (googleSignInAccount != null) {
-        /*GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
+        GoogleSignInAuthentication googleSignInAuthentication =
+        await googleSignInAccount.authentication;
         AuthCredential credential = GoogleAuthProvider.credential(
             idToken: googleSignInAuthentication.idToken,
-            accessToken: googleSignInAuthentication.accessToken);*/
-        //UserCredential result = await auth.signInWithCredential(credential);
-        User user = await auth.currentUser;
+            accessToken: googleSignInAuthentication.accessToken);
+        UserCredential result = await auth.signInWithCredential(credential);
+        User user = auth.currentUser;
         print(user.uid);
         final GoogleSignInAccount gCurrentUser = gSignIn.currentUser;
         DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
@@ -275,7 +288,7 @@ class _LoginState extends State<Login> {
 
   Scaffold login() {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).primaryColorLight,
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.only(left: 20, right: 20, top: 100, bottom: 20),
@@ -283,14 +296,41 @@ class _LoginState extends State<Login> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text("Log In",
-                  style: TextStyle(fontSize:30, color: Color(0xFF07fdab))
+              Stack(
+                children: <Widget>[
+                  // Stroked text as border.
+                  Text(
+                    'Log In',
+                    style:
+                    TextStyle(
+                      fontFamily: 'SubtleCurvesItalic',
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 2.0,
+                      foreground: Paint()
+                        ..style = PaintingStyle.stroke
+                        ..strokeWidth = 6
+                        ..color = Colors.black,
+                    ),
+                  ),
+                  // Solid text as fill.
+                  Text(
+                    'Log In',
+                    style: TextStyle(
+                      fontFamily: 'SubtleCurvesItalic',
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 2.0,
+                      color: Color(0xFF07fdab),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
                 height: 10,
               ),
               Text("Log In with one of the following options",
-                  style: TextStyle(fontSize:15, color: Color(0xFF07fdab))),
+                  style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize:15, fontFamily: 'Aleo', fontWeight: FontWeight.bold)),
               SizedBox(
                 height: 30,
               ),
@@ -326,6 +366,7 @@ class _LoginState extends State<Login> {
                         builder: (context) => Home()));
                     },
                   style: ElevatedButton.styleFrom(
+                    side: BorderSide(color: Colors.black, width: 2),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0)),
                     primary: Color(0xFF07fdab),
@@ -342,10 +383,7 @@ class _LoginState extends State<Login> {
                     child: Text(
                       "Log In",
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15),
+                      style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize:15, fontFamily: 'Aleo', fontWeight: FontWeight.bold)
                     ),
                   ),
                 ),
@@ -356,12 +394,12 @@ class _LoginState extends State<Login> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text("Don't have an account?",
-                        style: TextStyle(fontSize:15, color: Color(0xFF07fdab))),
+                        style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize:15, fontFamily: 'Aleo', fontWeight: FontWeight.bold)),
                     TextButton(
                       style: TextButton.styleFrom(
                         primary: Color(0xFF07fdab),
                       ),
-                      child: Text('Sign Up', style: (TextStyle(fontSize: 15))),
+                      child: Text('Sign Up', style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize:15, fontFamily: 'Aleo', fontWeight: FontWeight.bold, color: Color(0xFF07fdab)),),
                       onPressed: () {
                         //Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
                       },

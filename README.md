@@ -16,7 +16,7 @@ Binge is a multiplayer social party game app built using Flutter, where users ca
   - Visual deck selection with custom images and branding
 - **Virtual Currency (BingeCoins)**
   - Earn or purchase BingeCoins to unlock additional game features or decks
-  - Razorpay integration for in-app purchases
+  - Razorpay integration for in app purchases
 - **Profile and Social**
   - Custom avatars and profiles
   - Social login via Google
@@ -38,7 +38,7 @@ Binge is a multiplayer social party game app built using Flutter, where users ca
 
 3. **Setup Firebase**
    - Configure Firebase for both Android and iOS (see `firebase_core` and `cloud_firestore` dependencies).
-   - Add your `google-services.json`/`GoogleService-Info.plist` to the respective `android/` and `ios/` folders.
+   - Add your `google_services.json`/`GoogleService_Info.plist` to the respective `android/` and `ios/` folders.
 
 4. **Run the app**
    ```bash
@@ -47,10 +47,10 @@ Binge is a multiplayer social party game app built using Flutter, where users ca
 
 ## Tech Stack
 
-- **Flutter** (cross-platform, Dart)
+- **Flutter** (cross platform, Dart)
 - **Firebase** (Auth, Firestore)
-- **Razorpay** (in-app payments)
-- **Third-party packages**: google_sign_in, share, form_field_validator, etc.
+- **Razorpay** (in app payments)
+- **Third party packages**: google_sign_in, share, form_field_validator, etc.
  
 ## License
 
